@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="styles/times.css">
+
+{{#each jogadores}}
+    <div id="cartao" class="cartoes">
+        
+
+        <div id="foto" class="{{#ifCond foto 'default.png'}}default{{/ifCond}}" style='background-image: url(imagens/uploads/{{foto}});'></div>
+        
+        
+        <div id="informacoes">           
+            <div id="nome">{{nome}}</div>
+            <div id="sobrenome">{{sobrenome}}</div>
+            <div id="posicao">{{posicao}}</div>
+
+            <div id="numero">{{numero}}</div>
+        </div>
+    </div>
+{{/each}}

@@ -1,0 +1,161 @@
+<link rel="stylesheet" href="styles/ctrlJogadores.css">
+
+<button class="marcadores" id="mrJogadores">Jogadores</button>
+<button class="marcadores" id="mrJogos">Jogos</button>
+
+<div id="ctrlJogadores">
+    <h1>Controle de Jogadores</h1>
+
+    <table id="tabela">
+        <tr id="cabecalho">
+            <th class="colunas cId">ID</th>
+            <th class="colunas cNum">Nº</th>
+            <th class="colunas cNom">Nome</th>
+            <th class="colunas cSNon">Sobrenome</th>
+            <th class="colunas cPos">Posição</th>
+            <th class="colunas cCntt">CNTT</th>
+            <th class="colunas cCom">Comentário</th>
+            <th class="colunas cFoto">Foto</th>
+            <th class="colunas cEdit"></th>
+        </tr>
+        {{#each jogadores}}
+        <tr class="linhas" id="linha{{id}}">
+            <td class="colunas cId" >
+                <p>
+                    {{id}}
+                </p>
+
+                <button class="deletar">
+                    <span class="material-symbols-outlined">
+                        delete
+                    </span>
+                </button>
+            </td>
+            <td class="colunas cNum" data-valor="{{numero}}">{{numero}}</td>
+            <td class="colunas cNom" data-valor="{{nome}}">{{nome}}</td>
+            <td class="colunas cSNon" data-valor="{{sobrenome}}">{{sobrenome}}</td>
+            <td class="colunas cPos" data-valor="{{posicao}}">{{posicao}}</td>
+            <td class="colunas cCntt" {{#ifCond contrato 'ativo'}} data-valor="A">
+                    <div class="contratoA">A</div>
+                {{/ifCond}}
+
+                {{#ifCond contrato 'inativo'}} data-valor="I">
+                    <div class="contratoI">I</div>
+                {{/ifCond}}
+
+                {{#ifCond contrato 'emprestado'}} data-valor="E">
+                    <div class="contratoE">E</div>
+                {{/ifCond}}
+            </td>
+            <td class="colunas cCom" {{#ifCond comentario 'NaC'}} data-valor="">{{else}} data-valor="{{comentario}}">{{comentario}}{{/ifCond}}</td>
+            <td class="colunas cFoto">
+                <a {{#ifCond foto 'default.png'}} class='disabled' {{/ifCond}} href="./imagens/uploads/{{foto}}">
+                    <button type="submit">
+                        <span class="material-symbols-outlined">
+                            visibility
+                        </span>
+                    </button>
+                </a>
+                
+                <a  {{#ifCond foto 'default.png'}} class='disabled' {{/ifCond}} download href="./imagens/uploads/{{foto}}">
+                    <button type="submit">
+                        <span class="material-symbols-outlined">
+                            download
+                        </span>
+                    </button>
+                </a>
+
+                {{#ifCond foto 'default.png'}}
+                <a href="" class="enviarImagem">
+                    <input type="file" id="enviarImagem" hidden>
+                    <label for="enviarImagem">Enviar</label>
+                </a>
+                {{else}}
+                <a href="" class="trocarImagem">
+                    <input type="file" id="trocarImagem" hidden>
+                    <label for="trocarImagem">Trocar</label>
+                </a>
+                {{/ifCond}}
+            </td>
+            <td class="colunas cEdit">
+                <button class="buttons salv" id="">
+                    <span class="material-symbols-outlined">
+                        save
+                    </span>
+                </button>
+                <button class="buttons canc" id="">
+                    <span class="material-symbols-outlined">
+                        cancel
+                    </span>
+                </button>
+                <button class="buttons edit" id="{{id}}">
+                    <span class="material-symbols-outlined">
+                        ink_pen
+                    </span>
+                </button>
+            </td>
+        </tr>
+        {{/each}}
+    </table>
+
+    <form class="forms" action="/adJogador" method="post" enctype="multipart/form-data">
+        <div class="area nome">
+            <p>Nome</p>
+            <input value="a" class="inputs nome" type="text" name="nome">
+        </div>
+
+        <div class="area sobrenome">
+            <p>Sobrenome</p>
+            <input value="a" class="inputs sobrenome" type="text" name="sobrenome">
+        </div>
+
+        <div class="area apelido">
+            <p>Apelido</p>
+            <input value="a" class="inputs apelido" type="text" name="apelido">
+        </div>
+        
+        <div class="area numero">
+            <p>Número</p>
+            <input value="a" class="inputs numero" type="text" name="numero">
+        </div>
+
+        <div class="area posicao">
+            <p>Posição</p>
+
+            <div class="posJog">
+                <input hidden checked type="radio" name="posicao" id="rdGol" value="Goleiro">
+                <label class="labels posicao" for="rdGol">Goleiro</label>
+                <input hidden type="radio" name="posicao" id="rdDef" value="Defensor">
+                <label class="labels posicao" for="rdDef">Defensor</label>
+                <input hidden type="radio" name="posicao" id="rdAta" value="Atacante">
+                <label class="labels posicao" for="rdAta">Atacante</label>
+            </div>
+            
+            <div class="posTec">
+                <input hidden type="radio" name="posicao" id="rdTec" value="Treinador">
+                <label class="labels posicao" for="rdTec">Treinador</label>
+                <input hidden type="radio" name="posicao" id="rdCT" value="Comissão Tecnica">
+                <label class="labels posicao" for="rdCT">Comissão</label>
+            </div>
+        </div>
+
+        <div class="area foto">
+            <p>Foto</p>
+            <input hidden type="file" name="foto" id="inFoto">
+            <label class="labels foto" for="inFoto">
+                
+                <p>Adicionar Foto</p>
+
+                <img src="" id="previewFoto">
+            </label>
+        </div>
+
+        <button type="submit">Adicionar</button>
+    </form>
+</div>
+
+<div id="ctrlJogos">
+    oi
+</div>
+
+<script src="scripts/ctrl.js"></script>

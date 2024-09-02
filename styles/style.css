@@ -1,0 +1,409 @@
+@import url('https://fonts.googleapis.com/css2?family=New+Amsterdam&family=Oswald:wght@200..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root
+{
+    --amarelo: #ffc800;
+    --preto: #080808;
+
+    --font-oswald: "Oswald", sans-serif;
+    --font-new-amsterdam: "New Amsterdam", sans-serif;
+    --font-montserrat: "Montserrat", sans-serif
+}
+
+*
+{
+    margin: 0;
+    padding: 0;
+}
+
+body
+{
+    height: 100vh;
+    width: 100vw;
+
+    overflow-x: hidden;
+
+    display: grid;
+    grid-template-areas: "h" "m" "f";
+    grid-template-columns: 1fr;
+    grid-template-rows: 7.6rem 1fr 2rem;
+}
+
+::-webkit-scrollbar
+{
+    width: 0;
+}
+
+header
+{
+    grid-area: h;
+
+    background-color: var(--amarelo);
+    border-bottom: 0.4rem solid #f0bc00;
+
+    height: 100%;
+    width: 100%;
+
+    box-sizing: border-box;
+
+    display: flex;
+    justify-content: center;
+}
+
+.escudo
+{
+    height: 100%;
+    width: 12rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#escudo
+{
+    height: 80%;
+}
+
+#display
+{
+    position: absolute;
+    top: 0;
+
+    background-color: #000000;
+
+    height: max-content;
+    width: max-content;
+
+    padding: 0.2rem 0;
+
+    border-radius: 0 0 1rem 1rem;
+
+    color: #ffffff;
+    font-family: var(--font-montserrat);
+    text-decoration: none;
+
+    box-sizing: border-box;
+
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#display .nomeTime
+{
+    width: max-content;
+    margin: 0 1.4rem 0 0;
+    padding: 0 1rem;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: end;
+}
+
+#display .nomeTime.Visitante
+{
+    margin: 0 0 0 1.4rem;
+
+    justify-content: start;
+}
+
+#display .placar
+{
+    height:  3.4rem;
+
+    color: #000000;
+    font-family: var(--font-new-amsterdam);
+    font-size: 3.2rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#display .placar .timeCasa,
+#display .placar .timeVisitante
+{
+    background-color: white;
+
+    height: 100%;
+    width: 5rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    z-index: 0;
+
+} #display .placar .timeCasa {
+    padding: 0 0.5rem 0 0;
+    border-radius: 0.6rem 0 0 0.6rem;
+
+} #display .placar .timeVisitante {
+    padding: 0 0 0 0.5rem;
+    border-radius: 0 0.6rem 0.6rem 0;
+}
+
+#display .placar .timeCasa:before
+{
+    position: absolute;
+    top: 0;
+    right: 100%;
+    background: linear-gradient(
+                    0deg,
+                    #242424 50%,
+                    #f3be00 50%
+                );
+    content: '';
+    height: 100%;
+    width: 1.4rem;
+    border-radius: 0.6rem 0 0 0.6rem;
+    z-index: -2;
+}
+
+#display .placar .timeCasa::after
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #ffffff;
+    content: '';
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+} 
+
+#display .placar .timeVisitante:before
+{
+    position: absolute;
+    top: 0;
+    left: 100%;
+    background: linear-gradient(
+                    90deg,
+                    #242424 50%,
+                    #f3be00 50%
+                );
+    content: '';
+    height: 100%;
+    width: 1.4rem;
+    border-radius: 0 0.6rem 0.6rem 0;
+    z-index: -1;
+}
+
+#display .placar .timeVisitante::after
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #ffffff;
+    content: '';
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+}
+
+#display .placar .timeCasa .escudoJogo,
+#display .placar .timeVisitante .escudoJogo
+{
+    position: absolute;
+
+    height: auto;
+    width: 2rem;
+
+    z-index: 3;
+
+    display: flex;
+
+} #display .placar .timeCasa .escudoJogo {
+    left: -1rem;
+
+} #display .placar .timeVisitante .escudoJogo {
+    right: -1rem;
+}
+
+#display .placar .tempo
+{
+    position: absolute;
+    background-color: #ffffff;
+    height: 1.2rem;
+    width: 2.4rem;
+    border: 0.1rem solid #000000;
+    border-radius: 0.3rem;
+    color: #000000;
+    font-family: var(--font-montserrat);
+    font-size: 1rem;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 4;
+}
+
+nav
+{
+    height: 100%;
+
+    flex: 1;
+    
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+}
+
+nav a
+{
+    height: 100%;
+    width: 15rem;
+    
+    font-family: var(--font-montserrat);
+    color: rgb(0, 0, 0);
+    font-weight: 900;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.09rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 0.6rem;
+}
+
+#cima
+{
+    background-color: #e3b200;
+
+    height: 40%;
+    width: 100%;
+
+    border-bottom-left-radius: 1rem;
+
+    display: flex;
+    justify-content: space-between;
+
+    overflow: hidden;
+}
+
+#cima a
+{
+    width: 10rem;
+    transition: 0.1;
+}
+
+#cima a:hover
+{
+    transition: 0.3s;
+    background-color: #d4a600;
+}
+
+#cima a img
+{
+    height: 60%;
+}
+
+#baixo
+{
+    height: 60%;
+    width: 100%;
+    
+    padding: 0.24rem 12rem 0 0;
+    padding-left: -12rem;
+
+    font-size: 1.5rem;
+    
+    box-sizing: border-box;
+
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: center;
+}
+
+#baixo a
+{
+    position: relative;
+}
+
+#baixo a::before
+{
+    content: '';
+    background-color: transparent;
+    height: 0.4rem;
+    width: 0;
+    position: absolute;
+    top: 100%;
+    transition: 0.3s;
+}
+
+#baixo a:hover::before
+{
+    transition: 0.3s;
+    background-color: #000000;
+    width: 50%;
+}
+
+#baixo a.jogoAoVivo
+{
+    color: #ff0000;
+}
+
+#baixo a.jogoAoVivo:hover::before
+{
+    background-color: #ff0000;
+}
+
+#baixo a .bolinha
+{
+    position: absolute;
+    right: 20%;
+    background-color: #ff0000;
+    height: 0.7rem;
+    width: 0.7rem;
+    border-radius: 50rem;
+}
+
+#baixo a .bolinha::after
+{
+    position: absolute;
+    content: '';
+    background-color: inherit;
+    height: 100%;
+    width: 100%;
+    border-radius: inherit;
+    opacity: 0.8;
+    animation: pulso 1.5s ease-in-out infinite;
+}
+
+    @keyframes pulso
+    {
+        100%
+        {
+            opacity: 0;
+            transform: scale(2);
+        }
+    }
+
+main
+{
+    grid-area: m;
+
+    background: #c6c6c6;
+
+    padding: 4rem;
+
+    display: flex;
+    flex-flow: row wrap;
+    gap: 2rem;
+}
+
+footer
+{
+    grid-area: f;
+
+    background-color: rgb(31, 31, 31);
+}

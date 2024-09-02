@@ -1,4 +1,4 @@
-![](https://github.com/user-attachments/assets/e35685d2-1181-46ee-8d7d-a2437ddb27dc)
+![](https://github.com/user-attachments/assets/334849d7-7fec-4146-8e95-eeeeb82cf380)
 ## DIMEL FUTEBOL CLUBE
 Aqui pode ser encontrado informações sobre o time, os jogadores, comissões técnicas, jogos, campeonatos e títulos do DiMel FC!
 
